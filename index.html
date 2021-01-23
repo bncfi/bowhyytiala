@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta property="og:url"                content="" />
+		<meta property="og:type"               content="website" />
+		<meta property="og:title"              content="Band of Weeds" />
+		<meta property="og:description"        content="Audiowork for Hyytiälä Research Station" />
+		<meta property="og:image"              content="http://www.hermannikeko.net/kasvihyytialatone/graf/bow.jpg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+
+        <title>Band of Weeds</title>
+        <script type="text/javascript" src="node_modules/tone/build/Tone.js"></script>
+        <link rel="stylesheet" href="main.css">
+    </head>
+
+    <body>
+        <div id="container">
+
+            <img class="ico" id="plantIco" src="graf/plant_ico_green.svg" ontouchstart="startAudio()" onclick="startAudio()" />
+            <img class="ico" id ="matchIco" src="graf/match_ico_blue.svg" ontouchstart="stopAudio()" onclick="stopAudio()" />
+        </div>
+        <script src="compositionTone.js">
+
+        </script>
+    </body>
+</html>
