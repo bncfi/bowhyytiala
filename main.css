@@ -2,8 +2,9 @@ html, body {
     height: 100%;
     width: 100%;
     overflow: hidden;
-    background-image: url('graf/forest-background-2048x1365.jpg');
+    background-image: url('graf/bowbg1.jpg');
     background-repeat: no-repeat;
+    background-size: auto;
 }
 
 #container {
