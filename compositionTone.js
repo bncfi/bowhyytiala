@@ -48,68 +48,7 @@ const stereoWidener = new Tone.StereoWidener(1).toDestination();
 var kit = new Tone.Players({}).toDestination();
 addPlayers(sounds, kit);
 
-
-
-async function startAudio() {
-    try {
-        var plantIco = document.getElementById('plantIco');
-        var matchIco = document.getElementById('matchIco');
-        plantIco.style.display = "none";
-        matchIco.style.display = "block";
-        await Tone.start()
-        Tone.loaded().then(()=> {
-            startPart()
-            //Tone.Transport.start();
-        });
-          console.log('audio and transport on')
-    }catch(err) {
-        console.log("Error in startAudio: ", err.message)
-    }
-}
-  
-function stopAudio() {
-    try {
-        var plantIco = document.getElementById('plantIco');
-        var matchIco = document.getElementById('matchIco');
-        plantIco.style.display = "block";
-        matchIco.style.display = "none";
-        stopPart()
-        //Tone.Transport.stop();
-        console.log('audio and transport off')
-    }catch(err){
-        console.log("Error in stop audio: ", err.message)
-    }
-}
-
 //MIDI
-
-
-async function loadMidi() {
-    try{
-        const midi = await Midi.fromUrl("sounds/tikka.mid").then((midi) => {
-            var soundArrayLength = sounds.length
-            document.getElementById("playMidi").addEventListener("click", async (e) => {
-                const playing = e.detail
-                if (playing) {
-                    const now = Tone.now() + 0.5
-                    await Tone.start().then(() => {
-                        midi.tracks.forEach(track => {
-                            track.notes.forEach(note => {
-                                var randomPlayer = "kit"+Math.floor(Math.random()*soundArrayLength)
-                                kit.player(randomPlayer).start(note.time+now)
-                            })
-                        })
-                    })
-				}else {
-                    await Tone.stop()
-                }
-            })
-        })      
-    }catch(err){
-        console.log("Error in loadMidi: ", err.message)
-    }
-}
-
 
 
 async function midiToPart() {
@@ -147,22 +86,6 @@ async function midiToPart() {
     }
 }
 
-function startPart() {
-    part.start(0)
-    Tone.Transport.bpm.value = 120
-    Tone.Transport.PPQ = 64
-    console.log("bpm ", Tone.Transport.bpm.value)
-    console.log("PPQ ", Tone.Transport.PPQ)
-    Tone.Transport.start()
-}
-
-function stopPart() {
-    part.stop(0)
-    console.log("bpm ", Tone.Transport.bpm.value)
-    console.log("PPQ ", Tone.Transport.PPQ)
-    Tone.Transport.stop()
-}
-
 async function toggleTransport() {
     try{
         console.log("playstate: ", playState," animation state: ", animationState)
@@ -170,7 +93,6 @@ async function toggleTransport() {
             part.stop(0)
             Tone.Transport.stop()
             toggleAnimation()
-            //stopAnimation()
             playState = false
         }else {
             await Tone.start()
@@ -182,41 +104,11 @@ async function toggleTransport() {
                 console.log("PPQ ", Tone.Transport.PPQ)
                 Tone.Transport.start()
                 toggleAnimation()
-                //startAnimation()
                 playState = true
             });
-        }
-        
+        } 
     }catch(err) {
         console.log("Error in toggleTransport: ", err.message)
-    }
-}
-
-function startAnimation() {
-    try {
-        var vuosirenkaat = document.getElementById("vuosirenkaat")
-        if(animationState) {
-            console.log("Animation is already playing")
-        }else{
-            vuosirenkaat.style.animationName = "rotation"
-            animationState = true
-        }
-    }catch(err) {
-        console.log("Error in startAnimation: ", err.message)
-    }
-}
-
-function stopAnimation() {
-    try {
-        var vuosirenkaat = document.getElementById("vuosirenkaat")
-        if(animationState) {
-            vuosirenkaat.style.animationName = "none"
-            animationState = false
-        }else{
-            console.log("Animation is not playing")
-        }
-    }catch(err) {
-        console.log("Error in startAnimation: ", err.message)
     }
 }
 
