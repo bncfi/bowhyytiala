@@ -1,8 +1,26 @@
+@keyframes rotation {
+    /*
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg)}
+    */
+    
+    0% {transform: rotate(0deg);}
+    12% {transform: rotate(45deg);}
+    25% {transform: rotate(90deg);}
+    37% {transform: rotate(135deg);}
+    50% {transform: rotate(180deg);}
+    62% {transform: rotate(225deg);}
+    75% {transform: rotate(270deg);}
+    87% {transform: rotate(315deg);}
+    100% {transform: rotate(360deg);}
+    
+}
+
 html, body {
     height: 100%;
     width: 100%;
     overflow: hidden;
-    background-image: url('graf/bowbg1.jpg');
+    background-image: url('graf/forest-background-2048x1365.jpg');
     background-repeat: no-repeat;
     background-size: auto;
 }
@@ -26,6 +44,13 @@ html, body {
 
 #matchIco {
     display: none;
+}
+
+#vuosirenkaat {
+    display: none;
+    animation-name: none;
+    animation-duration: 0.6s;
+    animation-iteration-count: infinite;
 }
 
 @media only screen and (max-width: 480px) {
