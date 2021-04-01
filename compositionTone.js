@@ -13,6 +13,16 @@ function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
 }
 
+function openModal() {
+    var modal = document.getElementById("myModal");
+    modal.style.display = "block";
+}
+
+function closeModal() {
+    var modal = document.getElementById("myModal");
+    modal.style.display = "none";
+}
+
 //VARIABLES
 
 let playState = false;
@@ -77,6 +87,7 @@ async function midiToPart() {
                     kit.player(randomPlayer).start(time)               
                 }), notes)
                 part.loop = true
+                tearMaker(20)
                 var vuosirenkaat = document.getElementById("vuosirenkaat")
                 vuosirenkaat.style.display = "block"
             })
@@ -85,6 +96,8 @@ async function midiToPart() {
         console.log("Error in midiToPart: ", err.message)
     }
 }
+
+//TRANSPORT
 
 async function toggleTransport() {
     try{
@@ -114,14 +127,57 @@ async function toggleTransport() {
 
 function toggleAnimation() {
     try { 
+        var vuosirenkaat = document.getElementById("vuosirenkaat")
+        var tears = document.querySelectorAll(".tear")
+        console.log(tears)
         if(animationState) {
             vuosirenkaat.style.animationName = "none"
+            /*vuosirenkaat.style.webkitAnimationName = "none"*/
+            tears.forEach(tear=> {
+                tear.style.animationName = "none"
+            })
             animationState = false
         }else{
             vuosirenkaat.style.animationName = "rotation"
+            /*vuosirenkaat.style.webkitAnimationName = "rotation"*/
+            tears.forEach(tear=> {
+                tear.style.animationName = "teardrop"
+            })
             animationState = true
         }
     }catch(err){
         console.log("Error in toggleAnimation: ", err.message)
     }
+}
+
+//TEAR
+
+function tearMaker(tearAmount) {
+    try{
+        var container = document.getElementById("tearcontainer")
+        for(let i =0;i <tearAmount;i++) {
+            var tear = document.createElement("IMG")
+            tear.setAttribute("src", "graf/kyynel.png")
+            tear.setAttribute("class", "tear")
+            tear.style.top = Math.floor(getRandomArbitrary(10,(window.innerHeight*0.8)))+"px"
+            tear.style.left = Math.floor(getRandomArbitrary(0,window.innerWidth))+"px"
+            tear.style.animationDuration = getRandomArbitrary(0.5,3)+"s"
+            tear.addEventListener("animationiteration", function(){
+                this.style.top = Math.floor(getRandomArbitrary(10,(window.innerHeight*0.8)))+"px"
+                this.style.left = Math.floor(getRandomArbitrary(0,window.innerWidth))+"px"
+            });
+            container.appendChild(tear)
+        }
+    }catch(err){
+        console.log("Error in tearMaker: ", err.message)
+    }
+}
+
+
+function newRandomPos(element) {
+    console.log(element)
+    /*
+    element.style.top = Math.floor(getRandomArbitrary(10,(window.innerHeight*0.8)))+"px"
+    element.style.left = Math.floor(getRandomArbitrary(0,window.innerWidth))+"px"*/
+    console.log("kutsuttu")
 }

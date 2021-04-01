@@ -13,13 +13,34 @@
         <title>Band of Weeds</title>
         <script type="text/javascript" src="node_modules/tone/build/Tone.js"></script>
         <script type="text/javascript" src="node_modules/@tonejs/midi/build/Midi.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
        <!---- <script type="text/javascript" src="https://unpkg.com/@tonejs/midi"></script> -->
         <link rel="stylesheet" href="main.css">
     </head>
 
     <body>
-        <div id="container">
-            <img class ="ico" id="vuosirenkaat" src="graf/vuosirenkaat2.png" ontouchstart="toggleTransport()" onclick="toggleTransport()" />
+        <div id="tearcontainer">
+            <i class="material-icons"  id="modalButton" onmousedown="openModal()">info_outline</i>
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <i class="material-icons"  id="closeButton" onmousedown="closeModal()">close</i>
+                    <h2>Puiden valitus</h2>
+                    </div>
+                    <div class="modal-body">
+                    <p>Tähän sepostusta projektista</p>
+                    <p>Ja vähän kuvia</p>
+                    <p>ja krediitit yms</p>
+                    <p>Ja kalle saa päättää fontit... x)</p>
+                    </div>
+                    <div class="modal-footer">
+                    <h2>Band of Weeds</h2>
+                    </div>
+                </div>
+            </div>
+            <div id="container">
+                <img class ="ico" id="vuosirenkaat" src="graf/vuosirenkaat2.png" onmousedown="toggleTransport()" />
+            </div>
         </div>
         <script src="compositionTone.js">
 
