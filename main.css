@@ -31,6 +31,30 @@
     100% {transform: translate(0%,200%) skew(10deg,10deg) scale(0.4, 1.5);}
 }
 
+@keyframes sykkiva {
+    0% {max-width: 10%}
+    50% {max-width: 12%}
+    100% {max-width: 10%}
+}
+
+@-webkit-keyframes sykkiva {
+    0% {max-width: 10%}
+    50% {max-width: 12%}
+    100% {max-width: 10%}
+}
+
+@keyframes sykkivaMobile {
+    0% {max-width: 35%}
+    50% {max-width: 38%}
+    100% {max-width: 35%}
+}
+
+@-webkit-keyframes sykkivaMobile {
+    0% {max-width: 35%}
+    50% {max-width: 38%}
+    100% {max-width: 35%}
+}
+
 @-webkit-keyframes animatetop {
     from {top:-300px; opacity:0} 
     to {top:0; opacity:1}
@@ -53,9 +77,17 @@ html, body {
     height: 100%;
     width: 100%;
     overflow: hidden;
-    background-image: url('graf/forest-background-2048x1365.jpg');
+    /*background-image: url('graf/forest-background-2048x1365.jpg');*/
+    background-image: url('graf/puutausta.jpg');
     background-repeat: no-repeat;
     background-size: auto;
+    background-position: center;
+    font-family: 'Mulish';
+    font-size: 13px;
+}
+
+a {
+    color: black;
 }
 
 #container {
@@ -82,7 +114,8 @@ html, body {
 
 .tear {
     position: absolute;
-    max-width: 2.5%;
+    visibility: hidden;
+    max-width: 1.5%;
     height: auto;
     animation-name: none;
     animation-timing-function: ease-in;
@@ -93,10 +126,10 @@ html, body {
 #vuosirenkaat {
     margin: auto;
     display: none;
-    animation-name: none;
-    -webkit-animation-name: none;
-    animation-duration: 0.6s;
-    -webkit-animation-duration: 0.6s;
+    animation-name: sykkiva;
+    -webkit-animation-name: sykkiva;
+    animation-duration: 1.5s;
+    -webkit-animation-duration: 1.5s;
     animation-iteration-count: infinite;
     -webkit-animation-iteration-count: infinite;
 }
@@ -119,7 +152,7 @@ html, body {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    padding-top: 5%; /* Location of the box */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -133,42 +166,53 @@ html, body {
     position: relative;
     background-color: #fefefe;
     margin: auto;
-    padding: 0;
     /*border: 1px solid #888;*/
     width: 80%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
-    animation-duration: 0.4s
+    animation-duration: 0.4s;
+    margin-bottom: 5%;
   }
   
   .modal-header {
     position:relative;
     text-align: center;
     /*padding: 2px 16px;*/
-    background-color: #999966;
+    background-color: #666666;
     color: white;
   }
   
-  .modal-body {padding: 2px 16px;}
+  .modal-body {padding: 10px 16px;}
   
   .modal-footer {
     text-align: center;
     margin:auto;
     /*padding: 2px 16px;*/
-    background-color: #999966;
+    background-color: #666666;
     color: white;
   }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 500px) {
     .ico {
-        max-width: 30%;
+        max-width: 35%;
         height: auto;
+    }
+
+    #vuosirenkaat {
+        margin: auto;
+        display: none;
+        animation-name: sykkivaMobile;
+        -webkit-animation-name: sykkivaMobile;
+        animation-duration: 1.5s;
+        -webkit-animation-duration: 1.5s;
+        animation-iteration-count: infinite;
+        -webkit-animation-iteration-count: infinite;
     }
     .tear {
         position: absolute;
-        max-width: 3.5%;
+        max-width: 4.5%;
         height: auto;
         animation-name: none;
         animation-timing-function: ease-in;
